@@ -1,4 +1,39 @@
 Rails.application.routes.draw do
+  root :to => "movies#directors"
+  # Routes for the Movie resource:
+  # CREATE
+  get '/movies/new', controller: 'movies', action: 'new', as: 'new_movie'
+  post '/movies', controller: 'movies', action: 'create', as: 'movies'
+
+  # READ
+  get '/movies', controller: 'movies', action: 'index'
+  get '/movies/:id', controller: 'movies', action: 'show', as: 'movie'
+
+  # UPDATE
+  get '/movies/:id/edit', controller: 'movies', action: 'edit', as: 'edit_movie'
+  patch '/movies/:id', controller: 'movies', action: 'update'
+
+  # DELETE
+  delete '/movies/:id', controller: 'movies', action: 'destroy'
+  #------------------------------
+
+  # Routes for the Director resource:
+  # CREATE
+  get '/directors/new', controller: 'directors', action: 'new', as: 'new_director'
+  post '/directors', controller: 'directors', action: 'create', as: 'directors'
+
+  # READ
+  get '/directors', controller: 'directors', action: 'index'
+  get '/directors/:id', controller: 'directors', action: 'show', as: 'director'
+
+  # UPDATE
+  get '/directors/:id/edit', controller: 'directors', action: 'edit', as: 'edit_director'
+  patch '/directors/:id', controller: 'directors', action: 'update'
+
+  # DELETE
+  delete '/directors/:id', controller: 'directors', action: 'destroy'
+  #------------------------------
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
