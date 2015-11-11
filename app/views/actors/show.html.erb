@@ -1,0 +1,61 @@
+<h1>Actor #<%= @actor.id %></h1>
+
+<dl>
+  <dt>Name</dt>
+  <dd><%= @actor.name %></dd>
+
+  <dt>Dob</dt>
+  <dd><%= @actor.dob %></dd>
+
+  <dt>Bio</dt>
+  <dd><%= @actor.bio %></dd>
+
+  <dt>Image url</dt>
+  <dd><%= @actor.image_url %></dd>
+
+  <dt># of Characters</dt>
+  <dd><%= @characters.count %></dd>
+
+  <% if @characters.count >0 then -%>
+  <dt>Filmography / Characters</dt>
+  <dd>
+    <table class = "table">
+    <tr>
+      <th> Movie </th>
+      <th> Character </th>
+    </tr>
+      <% @characters.each do |ch| -%>
+      <tr>
+        <td> <%#= Movie.find_by(id: ch.movie_id).title %>
+             <%= ch.movie.title %>
+        </td>
+        <td> <%= ch.name %> </td>
+        </tr>
+          <% end -%>
+        </table>
+      </dd>
+      <% end -%>
+
+      <dt>Quick Add Character</dt>
+      <%= form_tag(characters_url, method: 'post') do %>
+
+      <input name="actor_id" type="hidden" value="<%= @actor.id %>">
+
+
+      <div>
+        <%= label_tag :movie_id %><br />
+        <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, :movie_id), :class => "form-control") =%>
+      </div>
+
+      <div>
+        <%= label_tag :name %><br />
+        <%= text_field_tag :name %>
+      </div>
+
+      <div>
+        <%= submit_tag "Create Character" %>
+      </div>
+      <% end %>
+
+
+    </dl>

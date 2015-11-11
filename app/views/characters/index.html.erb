@@ -1,0 +1,35 @@
+<h1>Characters</h1>
+
+<p><%= link_to 'Add a New Character', new_character_url %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Movie</th>
+      <th>Actor</th>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @characters.each do |character| %>
+    <tr>
+
+      <td><%#= Movie.find_by({:id => character.movie_id}).title %>
+          <%= character.movie.title %>
+      </td>
+      <td><%#= Actor.find_by({:id => character.actor_id}).name %>
+          <%= character.actors.name %>
+      </td>
+      <td><%= character.name %></td>
+      <td><%= link_to 'Show', character_url(character) %></td>
+      <td><%= link_to 'Edit', edit_character_url(character) %></td>
+      <td><%= link_to 'Destroy', character_url(character), method: 'delete', data: { confirm: "Do you really want to delete this character?" } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

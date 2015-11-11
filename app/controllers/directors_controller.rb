@@ -6,6 +6,8 @@ class DirectorsController < ApplicationController
 
   def show
     @director = Director.find_by(id: params[:id])
+    #@movies   = Movie.where({:director_id => @director.id})
+    @movies   = @director.movies
   end
 
   def new

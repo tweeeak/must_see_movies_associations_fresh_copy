@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Image url</th>
       <th>Name</th>
       <th>Dob</th>
       <th>Bio</th>
-      <th>Image url</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,10 +18,10 @@
   <tbody>
   <% @directors.each do |director| %>
     <tr>
+      <td><img src="<%= director.image_url %>"></td>
       <td><%= director.name %></td>
       <td><%= director.dob %></td>
       <td><%= director.bio %></td>
-      <td><%= director.image_url %></td>
       <td><%= link_to 'Show', director_url(director) %></td>
       <td><%= link_to 'Edit', edit_director_url(director) %></td>
       <td><%= link_to 'Destroy', director_url(director), method: 'delete', data: { confirm: "Do you really want to delete this director?" } %></td>

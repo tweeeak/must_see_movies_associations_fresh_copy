@@ -1,0 +1,24 @@
+<h1>New Character</h1>
+
+<%= form_tag(characters_url, method: 'post') do %>
+  <div>
+    <p><%= link_to 'Add a New Movie', new_movie_url %></p>
+    <%= label_tag :movie_id %><br />
+    <%= select_tag(:movie_id, options_from_collection_for_select(Movie.all, :id, :title, :movie_id), :class => "form-control") =%>
+  </div>
+  <p></p>
+  <div>
+    <p><%= link_to 'Add a New Actor', new_actor_url %></p>
+    <%= label_tag :actor_id %><br />
+    <%= select_tag(:actor_id, options_from_collection_for_select(Actor.all, :id, :name, :actor_id), :class => "form-control") =%>
+  </div>
+
+  <div>
+    <%= label_tag :name %><br />
+    <%= text_field_tag :name %>
+  </div>
+
+  <div>
+    <%= submit_tag "Create Character" %>
+  </div>
+<% end %>

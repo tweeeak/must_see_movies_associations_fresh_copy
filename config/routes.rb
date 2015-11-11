@@ -1,5 +1,39 @@
 Rails.application.routes.draw do
-  root :to => "movies#directors"
+  # Routes for the Character resource:
+  # CREATE
+  get '/characters/new', controller: 'characters', action: 'new', as: 'new_character'
+  post '/characters', controller: 'characters', action: 'create', as: 'characters'
+
+  # READ
+  get '/characters', controller: 'characters', action: 'index'
+  get '/characters/:id', controller: 'characters', action: 'show', as: 'character'
+
+  # UPDATE
+  get '/characters/:id/edit', controller: 'characters', action: 'edit', as: 'edit_character'
+  patch '/characters/:id', controller: 'characters', action: 'update'
+
+  # DELETE
+  delete '/characters/:id', controller: 'characters', action: 'destroy'
+  #------------------------------
+
+  # Routes for the Actor resource:
+  # CREATE
+  get '/actors/new', controller: 'actors', action: 'new', as: 'new_actor'
+  post '/actors', controller: 'actors', action: 'create', as: 'actors'
+
+  # READ
+  get '/actors', controller: 'actors', action: 'index'
+  get '/actors/:id', controller: 'actors', action: 'show', as: 'actor'
+
+  # UPDATE
+  get '/actors/:id/edit', controller: 'actors', action: 'edit', as: 'edit_actor'
+  patch '/actors/:id', controller: 'actors', action: 'update'
+
+  # DELETE
+  delete '/actors/:id', controller: 'actors', action: 'destroy'
+  #------------------------------
+
+  root :to => "movies#index"
   # Routes for the Movie resource:
   # CREATE
   get '/movies/new', controller: 'movies', action: 'new', as: 'new_movie'
